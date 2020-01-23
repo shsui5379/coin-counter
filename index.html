@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+	<html>
+		<head>
+			<title>Count de Money</title>
+			<style></style>
+			<script>
+				function initialize()  //starting values at 0
+				{
+					dollarCoins = document.getElementById("dollarCoinsCount");
+					dollarValue = document.getElementById("documentCoinsValue");
+					dollarCoins = 0;
+					
+					halfDollarCoins = document.getElementById("halfDollarCoinsCount");
+					halfDollarValue = document.getElementById("halfDollarCoinsValue");
+					halfDollarCoins = 0;
+					
+					quarters = document.getElementById("quartersCount");
+					quartersWorth = document.getElementById("quartersValue");
+					quarters = 0;
+					quartersWorth = 0;
+					
+					dimes = document.getElementById("dimesCount");
+					dimesWorth = document.getElementById("dimesValue");
+					dimes = 0;
+					
+					nickels = document.getElementById("nickelsCount");
+					nickelsWorth = document.getElementById("nickelsValue");
+					nickels = 0; 
+					
+					pennies = document.getElementById("penniesCount");
+					penniesWorth = document.getElementById("penniesValue");
+					pennies = 0;
+					
+					totalWorth = document.getElementById("totalValue");
+					totalWorth;
+					
+					totalCoin = document.getElementById("coins");
+					totalCoin;
+				}
+				function addCoin(count, countId, valueId, worth)   //increment, update spans and update variables on call
+				{
+					count++;
+    				display(count,countId, valueId, worth);
+    				return count;
+				}
+				function subtractCoin(count, countId, valueId, worth)
+				{
+					count--;
+					if (count < 0)
+					{
+						count = 0;
+					}
+					display(count, countId, valueId, worth);
+					return count;
+				}
+				function display(count, countId, valueId, worth)
+				{
+					countId.innerHTML = count;
+					valueId.innerHTML = (count * worth).toFixed(2);
+				}
+				function sum()
+				{
+					totalWorth.innerHTML = (1*dollarCoins + 0.5*halfDollarCoins + 0.25*quarters + 0.1*dimes + 0.05*nickels + 0.01*pennies).toFixed(2);
+					totalCoin.innerHTML = dollarCoins + halfDollarCoins + quarters + dimes + nickels + pennies;
+				}
+			</script>
+		</head>
+		<body onload = "initialize();">
+			<h1>Count de Money</h1>
+			<!-- Each section shows coin type, number of each type of coins present, total value of each type 
+			and buttons to add and subtract number of coins -->
+			
+			<b>Dollar coins</b> ($1.00 each)
+			</br>
+			You have <span id = "dollarCoinsCount">0</span> dollar coins, worth <span id = "dollarCoinsValue">0</span> dollars
+			</br>
+			<button onclick = "dollarCoins = addCoin(dollarCoins, dollarCoinsCount, dollarCoinsValue, 1); sum();">Add 1</button>
+			<button onclick = "dollarCoins = subtractCoin(dollarCoins, dollarCoinsCount, dollarCoinsValue, 1); sum();">Subtract 1</button>
+			<button onclick = "for(let i=0; i<5; i++){dollarCoins = addCoin(dollarCoins, dollarCoinsCount, dollarCoinsValue, 1)}; sum();">Add 5</button>
+			<button onclick = "for(let i=0; i<5; i++){dollarCoins = subtractCoin(dollarCoins, dollarCoinsCount, dollarCoinsValue, 1)}; sum();">Subtract 5</button>
+			</br>
+			</br>
+			
+			<b>Half Dollar Coins</b> ($0.50 each)
+			</br>
+			You have <span id = "halfDollarCoinsCount">0</span> half dollar coins, worth <span id = "halfDollarCoinsValue">0</span> dollars
+			</br>
+			<button onclick = "halfDollarCoins = addCoin(halfDollarCoins, halfDollarCoinsCount, halfDollarCoinsValue, 0.5); sum();">Add 1</button>
+			<button onclick = "halfDollarCoins = subtractCoin(halfDollarCoins, halfDollarCoinsCount, halfDollarCoinsValue, 0.5); sum();">Subtract 1</button>
+			<button onclick = "for(let i=0; i<5; i++){halfDollarCoins = addCoin(halfDollarCoins, halfDollarCoinsCount, halfDollarCoinsValue, 0.5)}; sum();">Add 5</button>
+			<button onclick = "for(let i=0; i<5; i++){halfDollarCoins = subtractCoin(halfDollarCoins, halfDollarCoinsCount, halfDollarCoinsValue, 0.5)}; sum();">Subtract 5</button>
+			</br>
+			</br>
+			
+			<b>Quarters</b> ($0.25 each)
+			</br>
+			You have <span id = "quartersCount">0</span> quarters, worth <span id = "quartersValue">0</span> dollars.  
+			</br>
+			<button onclick = "quarters = addCoin(quarters, quartersCount, quartersValue, 0.25); sum();">Add 1</button>  
+			<button onclick = "quarters = subtractCoin(quarters, quartersCount, quartersValue, 0.25); sum();">Subtract 1</button> 
+			<button onclick = "for(let i=0; i<5; i++){quarters = addCoin(quarters, quartersCount, quartersValue, 0.25)}; sum();">Add 5</button>
+			<button onclick = "for (let i=0; i<5; i++){quarters = subtractCoin(quarters, quartersCount, quartersValue, 0.25)}; sum();">Subtract 5</button>
+			</br>
+			</br>
+			
+			<b>Dimes</b> ($0.10 each)
+			</br>
+			You have <span id = "dimesCount">0</span> dimes, worth <span id = "dimesValue">0</span> dollars.  
+			</br>
+			<button onclick = "dimes = addCoin(dimes, dimesCount, dimesValue, 0.1); sum();">Add 1</button>
+			<button onclick = "dimes = subtractCoin(dimes, dimesCount, dimesValue, 0.1); sum();">Subtract 1</button>
+			<button onclick = "for(let i=0; i<5; i++){dimes = addCoin(dimes, dimesCount, dimesValue, 0.1)}; sum();">Add 5</button>
+			<button onclick = "for(let i=0; i<5; i++){dimes = subtractCoin(dimes, dimesCount, dimesValue, 0.1)}; sum();">Subtract 5</button>
+			</br>
+			</br>
+			
+			<b>Nickels</b> ($0.05 each)
+			</br>
+			You have <span id = "nickelsCount">0</span> nickels, worth <span id = "nickelsValue">0</span> dollars
+			</br>
+			<button onclick = "nickels = addCoin(nickels, nickelsCount, nickelsValue, 0.05); sum();">Add 1</button>
+			<button onclick = "nickels = subtractCoin(nickels, nickelsCount, nickelsValue, 0.05); sum();">Subtract 1</button>
+			<button onclick = "for(let i=0; i<5; i++){nickels = addCoin(nickels, nickelsCount, nickelsValue, 0.05)}; sum();">Add 5</button>
+			<button onclick = "for(let i=0; i<5; i++){nickels = subtractCoin(nickels, nickelsCount, nickelsValue, 0.05)}; sum();">Subtract 5</button>
+			</br>
+			</br>
+			
+			<b>Pennies</b> ($0.01 each)
+			</br>
+			You have <span id = "penniesCount">0</span> pennies, worth <span id = "penniesValue">0</span> dollars.  
+			</br>
+			<button onclick = "pennies = addCoin(pennies, penniesCount, penniesValue, 0.01); sum();">Add 1</button>
+			<button onclick = "pennies = subtractCoin(pennies, penniesCount, penniesValue, 0.01); sum();">Subtract 1</button>
+			<button onclick = "for(let i=0; i<5; i++){pennies = addCoin(pennies, penniesCount, penniesValue, 0.01)}; sum();">Add 5</button>
+			<button onclick = "for(let i=0; i<5; i++){pennies = subtractCoin(pennies, penniesCount, penniesValue, 0.01)}; sum();">Subtract 5</button>
+			</br>
+			</br> 
+			</br>
+			
+			In total, you have <span id = "coins">0</span> coins worth <span id = "totalValue">0</span> dollars.  
+		</body>
+	</html>
